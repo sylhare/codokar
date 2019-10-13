@@ -1,4 +1,4 @@
-package okr
+package com.github.sylhare.codokar.okr
 
 import java.io.File
 

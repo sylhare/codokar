@@ -1,4 +1,4 @@
-package cli
+package com.github.sylhare.codokar.cli
 
 
 internal class MakeOKR {

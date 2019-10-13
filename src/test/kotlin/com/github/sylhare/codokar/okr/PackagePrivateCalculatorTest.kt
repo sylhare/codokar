@@ -1,4 +1,4 @@
-import okr.*
+import com.github.sylhare.codokar.okr.*
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.nio.file.Paths
