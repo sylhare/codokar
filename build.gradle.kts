@@ -5,7 +5,7 @@ plugins {
 }
 
 application {
-    mainClassName = "samples.HelloWorldKt"
+    mainClassName = "cli.MakeOKRKt"
 }
 
 dependencies {
