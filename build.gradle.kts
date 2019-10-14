@@ -17,7 +17,6 @@ plugins {
 
 dependencies {
     compile(kotlin("stdlib"))
-    compile("org.jetbrains.kotlin:kotlin-stdlib:1.3.21")
     testCompile("junit:junit:4.12")
 }
 
