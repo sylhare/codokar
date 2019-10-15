@@ -13,6 +13,7 @@ plugins {
     application
     kotlin("jvm") version "1.3.21"
     jacoco
+    `maven-publish`
 }
 
 dependencies {
@@ -61,5 +62,23 @@ tasks.withType<JacocoReport> {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/sylhare/codokar")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("GPR_USER")
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("GPR_API_KEY")
+            }
+        }
+    }
+    publications {
+        create<MavenPublication>("codokar") {
+            from(components["java"])
+        }
     }
 }
