@@ -37,7 +37,7 @@ val fatJar = task("fatJar", type = Jar::class) {
         attributes["Main-Class"] = "com.github.sylhare.codokar.cli.MakeOKRKt"
     }
     from(
-        configurations.runtime.map {
+        configurations["runtimeClasspath"].map {
             if (it.isDirectory) it else zipTree(it)
         }
     )
