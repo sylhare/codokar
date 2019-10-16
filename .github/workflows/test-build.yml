@@ -1,4 +1,4 @@
-name: Java CI
+name: Codokar CI CD
 
 on: [push]
 
@@ -15,8 +15,3 @@ jobs:
       run: ./gradlew test
     - name: Build with Gradle
       run: ./gradlew build
-    - name: Publish to Github registry
-      env: # Or as an environment variable
-        GPR_USER: ${{ secrets.GPR_USER }}
-        GPR_API_KEY: ${{ secrets.GPR_API_KEY }}
-      run: ./gradlew publish
