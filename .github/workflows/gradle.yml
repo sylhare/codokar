@@ -11,8 +11,12 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-        
     - name: Unit Test
       run: ./gradlew test
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Publish to Github registry
+      env: # Or as an environment variable
+        GPR_USER: ${{ secrets.GPR_USER }}
+        GPR_API_KEY: ${{ secrets.GPR_API_KEY }}
+      run: ./gradlew publish
