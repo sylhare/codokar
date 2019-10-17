@@ -1,5 +1,8 @@
 # Codokar
 
+![cicd](https://github.com/sylhare/codokar/workflows/Codokar%20CI%20CD/badge.svg)
+
+
 A tool to get OKR measurement out of your code.
 
 To run:
