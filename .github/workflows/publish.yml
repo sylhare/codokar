@@ -1,4 +1,4 @@
-name: Publish to Github Registry on Tag
+name: Publish
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Publish to Github registry
+    - name: Publish to Github registry on tag
       env: 
         GPR_USER: ${{ secrets.GPR_USER }}
         GPR_API_KEY: ${{ secrets.GPR_API_KEY }}
