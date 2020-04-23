@@ -11,7 +11,7 @@ allprojects {
 
 plugins {
     application
-    kotlin("jvm") version "1.3.51"
+    kotlin("jvm") version "1.3.21"
     jacoco
     `maven-publish`
 }
