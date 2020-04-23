@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 allprojects {
     group = "com.github.sylhare.codokar"
-    version = "1.1"
+    version = "1.2"
     repositories {
         jcenter()
     }
@@ -29,17 +29,17 @@ application {
 
 // Super charge the jar to work like a fatJar
 // https://stackoverflow.com/a/61373175/7747942
-val jar by tasks.getting(Jar::class) {
-    manifest {
-        attributes["Main-Class"] = "com.github.sylhare.codokar.cli.MakeOKRKt"
-    }
-
-    from(sourceSets.main.get().output)
-    dependsOn(configurations.runtimeClasspath)
-    from({
-        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
-    })
-}
+//val jar by tasks.getting(Jar::class) {
+//    manifest {
+//        attributes["Main-Class"] = "com.github.sylhare.codokar.cli.MakeOKRKt"
+//    }
+//
+//    from(sourceSets.main.get().output)
+//    dependsOn(configurations.runtimeClasspath)
+//    from({
+//        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+//    })
+//}
 
 val fatJar = task("fatJar", type = Jar::class) {
     baseName = "${project.name}-fat"
