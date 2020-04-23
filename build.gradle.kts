@@ -11,7 +11,7 @@ allprojects {
 
 plugins {
     application
-    kotlin("jvm") version "1.3.21"
+    kotlin("jvm") version "1.3.51"
     jacoco
     `maven-publish`
 }
@@ -26,10 +26,19 @@ application {
     mainClassName = "com.github.sylhare.codokar.cli.MakeOKRKt"
 }
 
+
+// Super charge the jar to work like a fatJar
+// https://stackoverflow.com/a/61373175/7747942
 val jar by tasks.getting(Jar::class) {
     manifest {
         attributes["Main-Class"] = "com.github.sylhare.codokar.cli.MakeOKRKt"
     }
+
+    from(sourceSets.main.get().output)
+    dependsOn(configurations.runtimeClasspath)
+    from({
+        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+    })
 }
 
 val fatJar = task("fatJar", type = Jar::class) {
@@ -37,6 +46,7 @@ val fatJar = task("fatJar", type = Jar::class) {
     manifest {
         attributes["Main-Class"] = "com.github.sylhare.codokar.cli.MakeOKRKt"
     }
+
     from(
         configurations["runtimeClasspath"].map {
             if (it.isDirectory) it else zipTree(it)
