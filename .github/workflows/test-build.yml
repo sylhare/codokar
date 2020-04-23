@@ -12,6 +12,6 @@ jobs:
       with:
         java-version: 1.8
     - name: Unit Test
-      run: ./gradlew test
+      run: ./gradlew clean build test
     - name: Build with Gradle
       run: ./gradlew build
